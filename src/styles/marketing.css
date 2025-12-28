@@ -378,3 +378,12 @@ body {
     width: 100%;
   }
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.hero-cta a button:hover,
+.final-cta a button:hover {
+  background: var(--bg-hover);
+}
+
