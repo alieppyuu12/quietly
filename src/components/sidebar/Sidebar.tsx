@@ -1,5 +1,5 @@
 'use client'
-
+import { LogoutButton } from '@/components/auth/LogoutButton'
 import { useState } from 'react'
 import { useWorkspace } from '@/application/workspace/WorkspaceContext'
 import type { PageId } from '@/domain/entities/page'
@@ -7,7 +7,7 @@ import type { PageId } from '@/domain/entities/page'
 export function Sidebar() {
   const {
     pages,
-    state, 
+    state,
     openPage,
     goHome,
     createPage,
@@ -28,46 +28,28 @@ export function Sidebar() {
     pages
       .filter((p) => (p.parentId ?? null) === parentId)
       .map((p) => {
-        const hasChildren = pages.some(
-          (c) => c.parentId === p.id
-        )
+        const hasChildren = pages.some((c) => c.parentId === p.id)
         const isExpanded = expanded.has(p.id)
 
-        // ✅ ACTIVE STATE (INI KUNCINYA)
         const isActive =
-          state.mode === 'page' &&
-          state.page.id === p.id
+          state.mode === 'page' && state.page.id === p.id
 
         return (
           <div key={p.id}>
             <div
-              className={`sidebar-item ${
-                isActive ? 'active' : ''
-              }`}
-              style={{
-                paddingLeft: 8 + level * 12,
-              }}
+              className={`sidebar-item ${isActive ? 'active' : ''}`}
+              style={{ paddingLeft: 8 + level * 12 }}
             >
-              {/* Expand / collapse */}
               <span
                 className="sidebar-icon"
-                onClick={() =>
-                  hasChildren && toggleExpand(p.id)
-                }
+                onClick={() => hasChildren && toggleExpand(p.id)}
                 style={{
-                  cursor: hasChildren
-                    ? 'pointer'
-                    : 'default',
+                  cursor: hasChildren ? 'pointer' : 'default',
                 }}
               >
-                {hasChildren
-                  ? isExpanded
-                    ? '▾'
-                    : '▸'
-                  : '•'}
+                {hasChildren ? (isExpanded ? '▾' : '▸') : '•'}
               </span>
 
-              {/* Page title */}
               <span
                 onClick={() => openPage(p.id)}
                 style={{ cursor: 'pointer' }}
@@ -87,15 +69,10 @@ export function Sidebar() {
 
   return (
     <aside className="sidebar">
-      {/* ================= HEADER ================= */}
       <div className="sidebar-header">Quietly</div>
 
-      {/* ================= PRIMARY NAV ================= */}
       <div className="sidebar-section">
-        <div
-          className="sidebar-item"
-          onClick={openSearch}
-        >
+        <div className="sidebar-item" onClick={openSearch}>
           <span className="sidebar-icon"></span>
           <span>Search</span>
         </div>
@@ -111,35 +88,31 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* ================= PAGES ================= */}
       <div className="sidebar-section">
         <div className="sidebar-label">Pages</div>
 
-        <div className="sidebar-tree">
-          {renderTree(null)}
-        </div>
+        <div className="sidebar-tree">{renderTree(null)}</div>
 
-        <div
-          className="sidebar-item muted"
-          onClick={createPage}
-        >
+        <div className="sidebar-item muted" onClick={createPage}>
           <span className="sidebar-icon">＋</span>
           <span>Add page</span>
         </div>
       </div>
 
-      {/* ================= FOOTER ================= */}
-      <div className="sidebar-footer">
-        <div className="sidebar-item muted">
-          <span className="sidebar-icon">⚙</span>
-          <span>Settings</span>
-        </div>
+<div className="sidebar-footer">
+  <div className="sidebar-item muted">
+    <span className="sidebar-icon">⚙</span>
+    <span>Settings</span>
+  </div>
 
-        <div className="sidebar-item muted">
-          <span className="sidebar-icon">🗑</span>
-          <span>Trash</span>
-        </div>
-      </div>
+  <LogoutButton />
+
+  <div className="sidebar-item muted">
+    <span className="sidebar-icon">🗑</span>
+    <span>Trash</span>
+  </div>
+</div>
+
     </aside>
   )
 }
