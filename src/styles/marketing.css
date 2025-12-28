@@ -1,3 +1,7 @@
+/* ======================================================
+   ROOT (DIKUNCI — TIDAK DIUBAH)
+====================================================== */
+
 :root {
   --bg-main: #191919;
   --bg-surface: #202020;
@@ -11,16 +15,23 @@
   --border-subtle: #2b2b2b;
   --accent: #d6d6d6;
 
-    --space-xs: 8px;
+  --space-xs: 8px;
   --space-sm: 16px;
   --space-md: 32px;
   --space-lg: 64px;
   --space-xl: 120px;
 }
 
-/* ===== BASE ===== */
+/* ======================================================
+   BASE
+====================================================== */
+
+* {
+  box-sizing: border-box;
+}
 
 body {
+  margin: 0;
   background: var(--bg-main);
   color: var(--text-primary);
   font-family: system-ui, -apple-system, BlinkMacSystemFont,
@@ -28,6 +39,9 @@ body {
   line-height: 1.6;
 }
 
+/* ======================================================
+   MARKETING WRAPPER
+====================================================== */
 
 .marketing {
   max-width: 1200px;
@@ -38,10 +52,14 @@ body {
   gap: var(--space-xl);
 }
 
-
-/* ===== NAV ===== */
+/* ======================================================
+   NAV
+====================================================== */
 
 .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 13px;
   color: var(--text-secondary);
 }
@@ -53,6 +71,7 @@ body {
 
 .nav-center span {
   cursor: pointer;
+  margin: 0 var(--space-xs);
 }
 
 .nav-center span:hover {
@@ -71,8 +90,9 @@ body {
   font-weight: 500;
 }
 
-
-/* ===== HERO ===== */
+/* ======================================================
+   HERO
+====================================================== */
 
 .hero {
   max-width: 720px;
@@ -83,13 +103,8 @@ body {
   gap: var(--space-md);
 }
 
-.hero-cta {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: var(--space-md);
-}
-.hero h1 {
+.hero h1,
+.hero h2 {
   font-size: 48px;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -97,24 +112,28 @@ body {
 }
 
 .hero h2 {
-  font-size: 48px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
   color: var(--accent);
-  margin: 0;
 }
 
 .hero p {
   font-size: 16px;
   color: var(--text-secondary);
   max-width: 560px;
-  margin-top: var(--space-sm);
+  margin: var(--space-sm) auto 0;
 }
 
 .hero small {
   font-size: 12px;
   color: var(--text-muted);
 }
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
 .hero-cta button {
   padding: 12px 20px;
   border-radius: 8px;
@@ -128,27 +147,26 @@ body {
   background: var(--bg-hover);
 }
 
+/* ======================================================
+   GRID SYSTEM
+====================================================== */
 
-
-/* ===== GRID ===== */
-
-.value-grid {
+.value-grid,
+.supporting-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-md);
 }
 
-.supporting-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-md);
-}
-
-/* ===== CARD ===== */
+/* ======================================================
+   CARD
+====================================================== */
 
 .card {
   background: var(--bg-card);
   padding: var(--space-md);
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
 }
 
 .card h3 {
@@ -163,19 +181,23 @@ body {
   line-height: 1.6;
 }
 
-
-/* ===== FEATURE ===== */
+/* ======================================================
+   FEATURE (HIGHLIGHT SECTION)
+====================================================== */
 
 .feature-large {
   background: var(--bg-surface);
   padding: var(--space-lg);
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  max-width: 960px;
   margin: 0 auto;
 }
 
 .feature-large h2 {
   font-size: 28px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-xs);
 }
 
 .feature-large p {
@@ -185,23 +207,26 @@ body {
   margin-top: var(--space-sm);
 }
 
-
-/* ===== AUTHORITY ===== */
+/* ======================================================
+   AUTHORITY
+====================================================== */
 
 .authority {
   font-size: 13px;
   color: var(--text-muted);
   margin-top: var(--space-lg);
+  text-align: center;
 }
 
 .authority strong {
   display: block;
-  margin-top: 8px;
+  margin-top: var(--space-xs);
   letter-spacing: 0.1em;
 }
 
-
-/* ===== SKELETON ===== */
+/* ======================================================
+   SKELETON
+====================================================== */
 
 .skeleton-grid {
   display: grid;
@@ -212,15 +237,29 @@ body {
 .skeleton-box {
   height: 96px;
   border-radius: 12px;
-  background: #2a2a2a;
+  background: linear-gradient(
+    90deg,
+    #2a2a2a 25%,
+    #303030 37%,
+    #2a2a2a 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
 }
 
-/* ===== CTA ===== */
+@keyframes shimmer {
+  0% { background-position: 100% 0 }
+  100% { background-position: 0 0 }
+}
+
+/* ======================================================
+   FINAL CTA
+====================================================== */
 
 .final-cta {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: var(--space-md);
   margin-top: var(--space-xl);
 }
 
@@ -237,13 +276,11 @@ body {
   background: var(--bg-hover);
 }
 
-
-/* ===== FOOTER ===== */
-
 .footer {
   text-align: center;
   font-size: 13px;
   color: var(--text-muted);
   margin-top: var(--space-lg);
   padding-top: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
 }
