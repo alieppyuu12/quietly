@@ -131,12 +131,12 @@ export function Sidebar() {
       {/* ================= FOOTER ================= */}
       <div className="sidebar-footer">
         <div className="sidebar-item muted">
-          <span className="sidebar-icon">⚙️</span>
+          <span className="sidebar-icon">⚙</span>
           <span>Settings</span>
         </div>
 
         <div className="sidebar-item muted">
-          <span className="sidebar-icon">🗑️</span>
+          <span className="sidebar-icon">🗑</span>
           <span>Trash</span>
         </div>
       </div>
