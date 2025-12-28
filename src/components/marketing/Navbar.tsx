@@ -1,3 +1,4 @@
+import Link from 'next/link'
 export function Navbar() {
   return (
     <nav className="nav">
@@ -8,8 +9,14 @@ export function Navbar() {
         <span>Request a demo</span>
       </div>
       <div className="nav-right">
+        <Link href="/sign-in">
         <button>Log in</button>
-        <button>Get Quietly</button>
+        </Link>
+
+        <Link href="/sign-up">
+        <button>Get started</button>
+        </Link>
+
       </div>
     </nav>
   )

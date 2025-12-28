@@ -1,3 +1,4 @@
+import Link from 'next/link'
 export function Hero() {
   return (
     <section className="hero">
@@ -11,11 +12,14 @@ export function Hero() {
       </p>
 
       <div className="hero-cta">
-        <button>Get Quietly</button>
+        <Link href="/sign-up">
+         <button>Get started</button>
+        </Link>
         <button>Request a demo</button>
       </div>
 
       <small>Trusted by people who value clarity.</small>
+      
     </section>
   )
 }
