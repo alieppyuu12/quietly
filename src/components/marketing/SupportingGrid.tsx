@@ -4,8 +4,8 @@ export function SupportingGrid() {
       <div className="card">
         <h3>Thoughts, as they are</h3>
         <p>
-          Messy, unfinished, honest.
-          Nothing here needs fixing yet.
+          Capture ideas in their raw form—
+          no need to perfect them upfront.
         </p>
       </div>
 
