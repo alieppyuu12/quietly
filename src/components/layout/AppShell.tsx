@@ -11,15 +11,12 @@ export function AppShell() {
     <WorkspaceProvider>
       <div className="app-shell">
         <Sidebar />
-
-        {/* ===== MAIN AREA ===== */}
         <div className="app-content">
 
 
           <AppContent />
         </div>
 
-        {/* ===== GLOBAL OVERLAYS ===== */}
         <SearchOverlay />
       </div>
     </WorkspaceProvider>
