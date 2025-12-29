@@ -68,8 +68,6 @@ export function WorkspaceProvider({
     setState({ mode: 'home' })
   }
 
-  /* create */
-
   const openCreate = () => {
     setState({ mode: 'create' })
   }
@@ -119,8 +117,6 @@ export function WorkspaceProvider({
     setState({ mode: 'page', page: newPage })
   }
 
-  /* edit */
-
   const updatePageTitle = (pageId: PageId, title: string) => {
     setPages((prev) =>
       prev.map((p) =>
@@ -149,8 +145,6 @@ export function WorkspaceProvider({
     )
   }
 
-  /* favorite */
-
   const toggleFavorite = (pageId: PageId) => {
     setFavoritePageIds((prev) => {
       const next = new Set(prev)
@@ -158,8 +152,6 @@ export function WorkspaceProvider({
       return next
     })
   }
-
-  /* search */
 
   const openSearch = () => {
     setState((prev) =>

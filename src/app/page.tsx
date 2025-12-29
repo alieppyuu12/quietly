@@ -12,7 +12,7 @@ import { FinalCTA } from '@/components/marketing/FinalCTA'
 import { Footer } from '@/components/marketing/Footer'
 
 export default async function Page() {
-  const { userId } = await auth() // ⬅️ INI KUNCINYA
+  const { userId } = await auth() 
 
   if (userId) {
     redirect('/editor')
