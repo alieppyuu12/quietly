@@ -102,7 +102,7 @@ export function Sidebar() {
 <div className="sidebar-footer">
   <div className="sidebar-item muted">
     <span className="sidebar-icon">⚙</span>
-    <span>Settings</span>
+    <span>Setting</span>
   </div>
 
   <LogoutButton />
