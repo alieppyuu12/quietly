@@ -3,7 +3,7 @@ export function ValueGrid() {
     <section className="value-grid">
       <div className="card">
         <h3>Unload</h3>
-        <p>Write freely. No structure. No pressure.</p>
+        <p>Unleash your thoughts.</p>
       </div>
 
       <div className="card">
