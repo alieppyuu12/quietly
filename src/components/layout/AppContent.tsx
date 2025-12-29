@@ -5,10 +5,6 @@ import { HomeView } from '@/components/home/HomeView'
 import { DatabaseView } from '@/components/page/DatabaseView'
 import type { Page } from '@/domain/entities/page'
 
-/* ======================
-   HELPERS
-====================== */
-
 function getChildPages(pages: Page[], parentId: string) {
   return pages.filter((p) => p.parentId === parentId)
 }
@@ -27,9 +23,6 @@ function buildBreadcrumb(pages: Page[], current: Page): Page[] {
   return chain
 }
 
-/* ======================
-   COMPONENT
-====================== */
 
 export function AppContent() {
   const {
