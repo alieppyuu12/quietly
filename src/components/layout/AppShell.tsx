@@ -10,7 +10,6 @@ export function AppShell() {
   return (
     <WorkspaceProvider>
       <div className="app-shell">
-        {/* ===== SIDEBAR ===== */}
         <Sidebar />
 
         {/* ===== MAIN AREA ===== */}
