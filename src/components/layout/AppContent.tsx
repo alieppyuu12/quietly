@@ -51,7 +51,6 @@ export function AppContent() {
   return (
     <main className="page-root">
       <div className="page-container">
-        {/* Breadcrumb */}
         <nav className="breadcrumb">
           {breadcrumb.map((p, i) => (
             <span key={p.id}>
@@ -63,7 +62,6 @@ export function AppContent() {
           ))}
         </nav>
 
-        {/* Title */}
         <div className="page-title-row">
           <textarea
             className="page-title"
@@ -83,7 +81,6 @@ export function AppContent() {
           </button>
         </div>
 
-        {/* Content */}
         {childPages.length > 0 ? (
           <DatabaseView
             rows={childPages}
