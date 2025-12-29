@@ -8,7 +8,6 @@ import { HomeSkeleton } from './HomeSkeleton'
 export function HomeView() {
   const { pages, openPage } = useWorkspace()
 
-  // nanti bisa diganti loading async
   const isLoading = false
 
   if (isLoading) {
