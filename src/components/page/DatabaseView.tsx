@@ -70,7 +70,6 @@ export function DatabaseView({
 
   return (
     <section className="db">
-      {/* Toolbar */}
       <div className="db-toolbar">
         <input
           placeholder="Filter title..."
