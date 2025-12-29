@@ -113,7 +113,7 @@ export function AppContent() {
                 className="subtle"
                 onClick={() => createChildPage(page.id)}
               >
-                + Add sub-page
+                + Add a sub-page
               </button>
             </div>
           </>
