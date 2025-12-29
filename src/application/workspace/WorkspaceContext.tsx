@@ -56,8 +56,6 @@ export function WorkspaceProvider({
     new Set()
   )
 
-  /* navigation */
-
   const openPage = (pageId: PageId) => {
     const page = pages.find((p) => p.id === pageId)
     if (!page) return
