@@ -7,7 +7,7 @@ export function HomePageList() {
 
   return (
     <div>
-      <h3>Pages</h3>
+      <h3>Page</h3>
       <ul>
         {pages.map((page) => (
           <li key={page.id}>
