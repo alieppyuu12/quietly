@@ -104,7 +104,6 @@ export function DatabaseView({
         <button onClick={onCreateRow}>+ New Row</button>
       </div>
 
-      {/* Table */}
       {view === 'table' && (
         <div className="db-table">
           {processedRows.map((row) => (
@@ -123,7 +122,6 @@ export function DatabaseView({
         </div>
       )}
 
-      {/* Board */}
       {view === 'board' && (
         <div className="db-board">
           {Object.entries(groups).map(([col, items]) => (
