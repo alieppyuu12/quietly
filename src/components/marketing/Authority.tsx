@@ -1,8 +1,8 @@
 export function Authority() {
   return (
     <section className="authority">
-      <p>Your AI everything app.</p>
-      <strong>forbes</strong>
+      <p>We are the authority.</p>
+      <strong>Trusted by people who value clarity.</strong>
     </section>
   )
 }
