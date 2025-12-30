@@ -109,7 +109,7 @@ export function Sidebar() {
 
   <div className="sidebar-item muted">
     <span className="sidebar-icon"></span>
-    <span>Trash</span>
+    <span>Tras</span>
   </div>
 </div>
 
