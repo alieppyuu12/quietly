@@ -10,7 +10,7 @@ export function HomeGrid({
   if (pages.length === 0) {
     return (
       <div className="home-empty">
-        No pages yet. Create one to get started.
+        No pages yet. Create a new one.
       </div>
     )
   }
