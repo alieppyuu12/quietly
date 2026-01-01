@@ -10,6 +10,14 @@ export function SupportingGrid() {
       </div>
 
       <div className="card">
+        <h3>Focus on what matters</h3>
+        <p>
+          Quietly helps you get your thoughts down faster,
+          so you can focus on clarity.
+        </p>
+      </div>
+
+      <div className="card">
         <h3>Clarity, gently</h3>
         <p>
           Return later to organize what matters—
