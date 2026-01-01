@@ -318,8 +318,8 @@ body {
 
 .page-canvas {
   width: 100%;
-  max-width: 720px;      /* ⬅️ ini sweet spot Notion */
-  padding: 96px 0 160px; /* atas & bawah lebih lega */
+  max-width: 720px;    
+  padding: 96px 0 160px; 
 }
 
 .breadcrumb {
@@ -469,4 +469,3 @@ button.subtle:hover {
   display: flex;
   justify-content: center; /* penting */
 }
-
