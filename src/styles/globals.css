@@ -24,7 +24,6 @@ body {
     'Segoe UI', sans-serif;
 }
 
-/* LAYOUT */
 .app-shell {
   display: flex;
   height: 100vh;
