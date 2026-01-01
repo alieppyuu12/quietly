@@ -124,7 +124,6 @@ body {
   margin-bottom: 32px;
 }
 
-/* CARD / DATABASE */
 .card {
   background: var(--bg-card);
   border-radius: 8px;
