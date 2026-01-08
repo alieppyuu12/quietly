@@ -363,7 +363,6 @@ body {
     padding: var(--space-md);
   }
 
-  /* CTA */
   .final-cta {
     flex-direction: column;
   }
