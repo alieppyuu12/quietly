@@ -358,7 +358,6 @@ body {
     grid-template-columns: 1fr;
   }
 
-  /* FEATURE */
   .feature-large {
     padding: var(--space-md);
   }
