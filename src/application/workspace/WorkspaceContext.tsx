@@ -46,6 +46,7 @@ export function WorkspaceProvider({
     { id: 'page-1', title: 'Daily Notes', content: 'This is your daily notes.' },
     { id: 'page-2', title: 'Project Ideas', content: 'List your project ideas here.' },
     { id: 'page-3', title: 'Tasks', content: 'Track your tasks.' },
+    { id: 'page-4', title: 'To-Do List', content: 'Your to-do list.' },
   ])
 
   const [state, setState] = useState<WorkspaceState>({
