@@ -40,7 +40,7 @@ export function CreatePageModal() {
 
         <div className="create-hint">
           Press <strong>Enter</strong> to create ·{' '}
-          <strong>Esc</strong> to cancel
+          <strong>Esc</strong> for cancel
         </div>
       </div>
     </div>
