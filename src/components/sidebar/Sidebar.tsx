@@ -32,7 +32,7 @@ export function Sidebar() {
         const isExpanded = expanded.has(p.id)
 
         const isActive =
-          state.mode === 'page' && state.page.id === p.id
+          state.mode === 'page' && state.page && state.page.id === p.id
 
         return (
           <div key={p.id}>

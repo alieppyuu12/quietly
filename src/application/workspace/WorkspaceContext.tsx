@@ -60,7 +60,7 @@ export function WorkspaceProvider({
   const openPage = (pageId: PageId) => {
     const page = pages.find((p) => p.id === pageId)
     if (!page) return
-    setState({ mode: 'page', page })
+    setState((prev) => ({ mode: 'page', page, previous: prev }))
   }
 
   const goHome = () => {
