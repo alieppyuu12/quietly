@@ -1,176 +1,271 @@
-'use client'
+"use client";
 
-import { createContext, useContext, useState } from 'react'
-import type { Page, PageId } from '@/domain/entities/page'
+import { createContext, useContext, useState } from "react";
+import type { Page, PageId } from "@/domain/entities/page";
 
 type WorkspaceState =
-  | { mode: 'home' }
-  | { mode: 'page'; page: Page }
-  | { mode: 'search'; previous: WorkspaceState }
-  | { mode: 'create' }
+  | { mode: "home" }
+  | { mode: "page"; page: Page }
+  | { mode: "search"; previous: WorkspaceState }
+  | { mode: "create" }
+  | { mode: "trash" }
+  | { mode: "settings" };
 
 type WorkspaceContextValue = {
-  state: WorkspaceState
-  pages: Page[]
+  state: WorkspaceState;
+  pages: Page[];
+  trashedPages: Page[];
 
-  openPage: (pageId: PageId) => void
-  goHome: () => void
+  openPage: (pageId: PageId) => void;
+  goHome: () => void;
 
-  openCreate: () => void
-  createPage: () => void
-  createChildPage: (parentId: PageId) => void
+  openCreate: () => void;
+  createPage: () => void;
+  createChildPage: (parentId: PageId) => void;
 
-  updatePageTitle: (pageId: PageId, title: string) => void
-  updatePageContent: (pageId: PageId, content: string) => void
+  updatePageTitle: (pageId: PageId, title: string) => void;
+  updatePageContent: (pageId: PageId, content: string) => void;
 
-  favoritePageIds: Set<PageId>
-  toggleFavorite: (pageId: PageId) => void
+  deletePage: (pageId: PageId) => void;
+  restorePage: (pageId: PageId) => void;
+  permanentlyDeletePage: (pageId: PageId) => void;
 
-  openSearch: () => void
-  closeSearch: () => void
-}
+  favoritePageIds: Set<PageId>;
+  toggleFavorite: (pageId: PageId) => void;
 
-const WorkspaceContext =
-  createContext<WorkspaceContextValue | null>(null)
+  openSearch: () => void;
+  closeSearch: () => void;
+
+  openTrash: () => void;
+  closeTrash: () => void;
+
+  openSettings: () => void;
+  closeSettings: () => void;
+};
+
+const WorkspaceContext = createContext<WorkspaceContextValue | null>(null);
 
 function generatePageId(): PageId {
-  return `page-${Date.now()}`
+  return `page-${Date.now()}`;
 }
 
-export function WorkspaceProvider({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
   const [pages, setPages] = useState<Page[]>([
-    { id: 'page-1', title: 'Daily Notes', content: 'This is your space.' },
-    { id: 'page-2', title: 'Project Ideas', content: 'List your project ideas here.' },
-    { id: 'page-3', title: 'Tasks', content: 'Track your tasks.' },
-    { id: 'page-4', title: 'To Do List', content: 'Your todo list.' },
-  ])
+    { id: "page-1", title: "Daily Notes", content: "This is your space." },
+    {
+      id: "page-2",
+      title: "Project Ideas",
+      content: "List your project ideas here.",
+    },
+    { id: "page-3", title: "Tasks", content: "Track your tasks." },
+    { id: "page-4", title: "To Do List", content: "Your todo list." },
+  ]);
+
+  const [trashedPages, setTrashedPages] = useState<Page[]>([]);
 
   const [state, setState] = useState<WorkspaceState>({
-    mode: 'home',
-  })
+    mode: "home",
+  });
 
   const [favoritePageIds, setFavoritePageIds] = useState<Set<PageId>>(
-    new Set()
-  )
+    new Set(),
+  );
 
   const openPage = (pageId: PageId) => {
-    const page = pages.find((p) => p.id === pageId)
-    if (!page) return
-    setState((prev) => ({ mode: 'page', page, previous: prev }))
-  }
+    const page = pages.find((p) => p.id === pageId);
+    if (!page) return;
+    setState((prev) => ({ mode: "page", page, previous: prev }));
+  };
 
   const goHome = () => {
-    setState({ mode: 'home' })
-  }
+    setState({ mode: "home" });
+  };
 
   const openCreate = () => {
-    setState({ mode: 'create' })
-  }
+    setState({ mode: "create" });
+  };
 
   const createPage = () => {
-    const baseTitle = 'Untitled'
+    const baseTitle = "Untitled";
     const count = pages.filter(
-      (p) =>
-        p.title === baseTitle ||
-        p.title.startsWith(`${baseTitle} (`)
-    ).length
+      (p) => p.title === baseTitle || p.title.startsWith(`${baseTitle} (`),
+    ).length;
 
-    const title =
-      count === 0 ? baseTitle : `${baseTitle} (${count + 1})`
+    const title = count === 0 ? baseTitle : `${baseTitle} (${count + 1})`;
 
     const newPage: Page = {
       id: generatePageId(),
       title,
-      content: '',
-    }
+      content: "",
+    };
 
-    setPages((prev) => [...prev, newPage])
-    setState({ mode: 'page', page: newPage })
-  }
+    setPages((prev) => [...prev, newPage]);
+    setState({ mode: "page", page: newPage });
+  };
 
   const createChildPage = (parentId: PageId) => {
-    const baseTitle = 'Untitled'
-    const siblings = pages.filter((p) => p.parentId === parentId)
+    const baseTitle = "Untitled";
+    const siblings = pages.filter((p) => p.parentId === parentId);
 
     const count = siblings.filter(
-      (p) =>
-        p.title === baseTitle ||
-        p.title.startsWith(`${baseTitle} (`)
-    ).length
+      (p) => p.title === baseTitle || p.title.startsWith(`${baseTitle} (`),
+    ).length;
 
-    const title =
-      count === 0 ? baseTitle : `${baseTitle} (${count + 1})`
+    const title = count === 0 ? baseTitle : `${baseTitle} (${count + 1})`;
 
     const newPage: Page = {
       id: generatePageId(),
       title,
-      content: '',
+      content: "",
       parentId,
-    }
+    };
 
-    setPages((prev) => [...prev, newPage])
-    setState({ mode: 'page', page: newPage })
-  }
+    setPages((prev) => [...prev, newPage]);
+    setState({ mode: "page", page: newPage });
+  };
 
   const updatePageTitle = (pageId: PageId, title: string) => {
     setPages((prev) =>
-      prev.map((p) =>
-        p.id === pageId ? { ...p, title } : p
-      )
-    )
+      prev.map((p) => (p.id === pageId ? { ...p, title } : p)),
+    );
 
     setState((prev) =>
-      prev.mode === 'page' && prev.page.id === pageId
-        ? { mode: 'page', page: { ...prev.page, title } }
-        : prev
-    )
-  }
+      prev.mode === "page" && prev.page.id === pageId
+        ? { mode: "page", page: { ...prev.page, title } }
+        : prev,
+    );
+  };
 
   const updatePageContent = (pageId: PageId, content: string) => {
     setPages((prev) =>
-      prev.map((p) =>
-        p.id === pageId ? { ...p, content } : p
-      )
-    )
+      prev.map((p) => (p.id === pageId ? { ...p, content } : p)),
+    );
 
     setState((prev) =>
-      prev.mode === 'page' && prev.page.id === pageId
-        ? { mode: 'page', page: { ...prev.page, content } }
-        : prev
-    )
-  }
+      prev.mode === "page" && prev.page.id === pageId
+        ? { mode: "page", page: { ...prev.page, content } }
+        : prev,
+    );
+  };
 
   const toggleFavorite = (pageId: PageId) => {
     setFavoritePageIds((prev) => {
-      const next = new Set(prev)
-      next.has(pageId) ? next.delete(pageId) : next.add(pageId)
-      return next
-    })
-  }
+      const next = new Set(prev);
+      next.has(pageId) ? next.delete(pageId) : next.add(pageId);
+      return next;
+    });
+  };
 
   const openSearch = () => {
     setState((prev) =>
-      prev.mode === 'search'
-        ? prev
-        : { mode: 'search', previous: prev }
-    )
-  }
+      prev.mode === "search" ? prev : { mode: "search", previous: prev },
+    );
+  };
 
   const closeSearch = () => {
-    setState((prev) =>
-      prev.mode === 'search' ? prev.previous : prev
-    )
-  }
+    setState((prev) => (prev.mode === "search" ? prev.previous : prev));
+  };
+
+  const deletePage = (pageId: PageId) => {
+    const page = pages.find((p) => p.id === pageId);
+    if (!page) return;
+
+    // Remove from active pages
+    setPages((prev) => prev.filter((p) => p.id !== pageId));
+
+    // Also remove child pages
+    const childIds = new Set<PageId>();
+    const collectChildren = (id: PageId) => {
+      pages.forEach((p) => {
+        if (p.parentId === id) {
+          childIds.add(p.id);
+          collectChildren(p.id);
+        }
+      });
+    };
+    collectChildren(pageId);
+
+    // Remove children from pages
+    setPages((prev) => prev.filter((p) => !childIds.has(p.id)));
+
+    // Add to trash
+    setTrashedPages((prev) => [
+      ...prev,
+      page,
+      ...pages.filter((p) => childIds.has(p.id)),
+    ]);
+
+    // Remove from favorites
+    setFavoritePageIds((prev) => {
+      const next = new Set(prev);
+      next.delete(pageId);
+      childIds.forEach((id) => next.delete(id));
+      return next;
+    });
+
+    // Close page if currently open
+    if (state.mode === "page" && state.page.id === pageId) {
+      goHome();
+    }
+  };
+
+  const restorePage = (pageId: PageId) => {
+    const page = trashedPages.find((p) => p.id === pageId);
+    if (!page) return;
+
+    // Remove from trash
+    setTrashedPages((prev) => prev.filter((p) => p.id !== pageId));
+
+    // Add back to pages
+    setPages((prev) => [...prev, page]);
+
+    // Also restore child pages
+    const childIds = new Set<PageId>();
+    const collectChildren = (id: PageId) => {
+      trashedPages.forEach((p) => {
+        if (p.parentId === id) {
+          childIds.add(p.id);
+          collectChildren(p.id);
+        }
+      });
+    };
+    collectChildren(pageId);
+
+    if (childIds.size > 0) {
+      setPages((prev) => [
+        ...prev,
+        ...trashedPages.filter((p) => childIds.has(p.id)),
+      ]);
+      setTrashedPages((prev) => prev.filter((p) => !childIds.has(p.id)));
+    }
+  };
+
+  const permanentlyDeletePage = (pageId: PageId) => {
+    setTrashedPages((prev) => prev.filter((p) => p.id !== pageId));
+  };
+
+  const openTrash = () => {
+    setState({ mode: "trash" });
+  };
+
+  const closeTrash = () => {
+    setState({ mode: "home" });
+  };
+
+  const openSettings = () => {
+    setState({ mode: "settings" });
+  };
+
+  const closeSettings = () => {
+    setState({ mode: "home" });
+  };
 
   return (
     <WorkspaceContext.Provider
       value={{
         state,
         pages,
+        trashedPages,
 
         openPage,
         goHome,
@@ -182,22 +277,32 @@ export function WorkspaceProvider({
         updatePageTitle,
         updatePageContent,
 
+        deletePage,
+        restorePage,
+        permanentlyDeletePage,
+
         favoritePageIds,
         toggleFavorite,
 
         openSearch,
         closeSearch,
+
+        openTrash,
+        closeTrash,
+
+        openSettings,
+        closeSettings,
       }}
     >
       {children}
     </WorkspaceContext.Provider>
-  )
+  );
 }
 
 export function useWorkspace() {
-  const ctx = useContext(WorkspaceContext)
+  const ctx = useContext(WorkspaceContext);
   if (!ctx) {
-    throw new Error('useWorkspace must be used within WorkspaceProvider')
+    throw new Error("useWorkspace must be used within WorkspaceProvider");
   }
-  return ctx
+  return ctx;
 }

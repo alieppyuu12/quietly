@@ -1,28 +1,29 @@
-'use client'
+"use client";
 
-import { useWorkspace } from '@/application/workspace/WorkspaceContext'
-import { HomeView } from '@/components/home/HomeView'
-import { DatabaseView } from '@/components/page/DatabaseView'
-import type { Page } from '@/domain/entities/page'
+import { useWorkspace } from "@/application/workspace/WorkspaceContext";
+import { HomeView } from "@/components/home/HomeView";
+import { TrashView } from "@/components/home/TrashView";
+import { SettingsView } from "@/components/home/SettingsView";
+import { DatabaseView } from "@/components/page/DatabaseView";
+import type { Page } from "@/domain/entities/page";
 
 function getChildPages(pages: Page[], parentId: string) {
-  return pages.filter((p) => p.parentId === parentId)
+  return pages.filter((p) => p.parentId === parentId);
 }
 
 function buildBreadcrumb(pages: Page[], current: Page): Page[] {
-  const map = new Map(pages.map((p) => [p.id, p]))
-  const chain: Page[] = []
+  const map = new Map(pages.map((p) => [p.id, p]));
+  const chain: Page[] = [];
 
-  let cursor: Page | undefined = current
+  let cursor: Page | undefined = current;
   while (cursor) {
-    chain.unshift(cursor)
-    if (!cursor.parentId) break
-    cursor = map.get(cursor.parentId)
+    chain.unshift(cursor);
+    if (!cursor.parentId) break;
+    cursor = map.get(cursor.parentId);
   }
 
-  return chain
+  return chain;
 }
-
 
 export function AppContent() {
   const {
@@ -35,18 +36,27 @@ export function AppContent() {
     createChildPage,
     favoritePageIds,
     toggleFavorite,
-  } = useWorkspace()
+    deletePage,
+  } = useWorkspace();
 
-  if (state.mode === 'home') {
-    return <HomeView />
+  if (state.mode === "home") {
+    return <HomeView />;
   }
 
-  if (state.mode !== 'page') return null
+  if (state.mode === "trash") {
+    return <TrashView />;
+  }
 
-  const page = state.page
-  const breadcrumb = buildBreadcrumb(pages, page)
-  const childPages = getChildPages(pages, page.id)
-  const isFavorite = favoritePageIds.has(page.id)
+  if (state.mode === "settings") {
+    return <SettingsView />;
+  }
+
+  if (state.mode !== "page") return null;
+
+  const page = state.page;
+  const breadcrumb = buildBreadcrumb(pages, page);
+  const childPages = getChildPages(pages, page.id);
+  const isFavorite = favoritePageIds.has(page.id);
 
   return (
     <main className="page-root">
@@ -54,10 +64,8 @@ export function AppContent() {
         <nav className="breadcrumb">
           {breadcrumb.map((p, i) => (
             <span key={p.id}>
-              <button onClick={() => openPage(p.id)}>
-                {p.title}
-              </button>
-              {i < breadcrumb.length - 1 && ' ▸ '}
+              <button onClick={() => openPage(p.id)}>{p.title}</button>
+              {i < breadcrumb.length - 1 && " ▸ "}
             </span>
           ))}
         </nav>
@@ -66,9 +74,7 @@ export function AppContent() {
           <textarea
             className="page-title"
             value={page.title}
-            onChange={(e) =>
-              updatePageTitle(page.id, e.target.value)
-            }
+            onChange={(e) => updatePageTitle(page.id, e.target.value)}
             placeholder="Untitled"
           />
 
@@ -77,7 +83,7 @@ export function AppContent() {
             onClick={() => toggleFavorite(page.id)}
             aria-label="Toggle favorite"
           >
-            {isFavorite ? '⭐️' : '☆'}
+            {isFavorite ? "⭐️" : "☆"}
           </button>
         </div>
 
@@ -92,9 +98,7 @@ export function AppContent() {
             <textarea
               className="page-content"
               value={page.content}
-              onChange={(e) =>
-                updatePageContent(page.id, e.target.value)
-              }
+              onChange={(e) => updatePageContent(page.id, e.target.value)}
               placeholder="Start writing..."
             />
 
@@ -105,6 +109,20 @@ export function AppContent() {
               >
                 + Add a sub-page
               </button>
+              <button
+                className="subtle danger"
+                onClick={() => {
+                  if (
+                    confirm(
+                      `Delete "${page.title}"? This will move it to trash.`,
+                    )
+                  ) {
+                    deletePage(page.id);
+                  }
+                }}
+              >
+                🗑️ Delete
+              </button>
             </div>
           </>
         )}
@@ -113,8 +131,20 @@ export function AppContent() {
           <button className="subtle" onClick={goHome}>
             Back
           </button>
+          <button
+            className="subtle danger"
+            onClick={() => {
+              if (
+                confirm(`Delete "${page.title}"? This will move it to trash.`)
+              ) {
+                deletePage(page.id);
+              }
+            }}
+          >
+            🗑️ Delete
+          </button>
         </div>
       </div>
     </main>
-  )
+  );
 }
