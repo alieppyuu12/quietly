@@ -10,7 +10,7 @@ export function TrashView() {
     <main className="page-root">
       <div className="page-container">
         <div className="page-title-row">
-          <h1 className="page-title-static">🗑️ Trash</h1>
+          <h1 className="page-title-static"> Trash</h1>
         </div>
 
         {trashedPages.length === 0 ? (

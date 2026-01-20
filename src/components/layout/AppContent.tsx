@@ -121,7 +121,7 @@ export function AppContent() {
                   }
                 }}
               >
-                🗑️ Delete
+                 Delete
               </button>
             </div>
           </>
@@ -141,7 +141,7 @@ export function AppContent() {
               }
             }}
           >
-            🗑️ Delete
+             Delete
           </button>
         </div>
       </div>

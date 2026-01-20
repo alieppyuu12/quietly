@@ -102,7 +102,7 @@ export function Sidebar() {
           className={`sidebar-item muted ${state.mode === "settings" ? "active" : ""}`}
           onClick={openSettings}
         >
-          <span className="sidebar-icon">⚙️</span>
+          <span className="sidebar-icon"></span>
           <span>Settings</span>
         </div>
 
@@ -112,7 +112,7 @@ export function Sidebar() {
           className={`sidebar-item muted ${state.mode === "trash" ? "active" : ""}`}
           onClick={openTrash}
         >
-          <span className="sidebar-icon">🗑️</span>
+          <span className="sidebar-icon"></span>
           <span>Trash</span>
         </div>
       </div>
