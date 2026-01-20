@@ -1,4 +1,5 @@
-import Link from 'next/link'
+import Link from "next/link";
+
 export function Navbar() {
   return (
     <nav className="nav">
@@ -10,14 +11,13 @@ export function Navbar() {
       </div>
       <div className="nav-right">
         <Link href="/sign-in">
-        <button>Log in</button>
+          <button>Log in</button>
         </Link>
 
         <Link href="/sign-up">
-        <button>Get started</button>
+          <button className="btn-nav-primary">Get started</button>
         </Link>
-
       </div>
     </nav>
-  )
+  );
 }

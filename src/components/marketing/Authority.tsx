@@ -4,5 +4,5 @@ export function Authority() {
       <p>We believe in the power of clarity.</p>
       <strong>Trusted by people who value clarity.</strong>
     </section>
-  )
+  );
 }

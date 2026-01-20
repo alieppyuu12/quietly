@@ -3,8 +3,9 @@ export function FeatureCard() {
     <section className="feature-large">
       <h2>Start writing, instantly</h2>
       <p>
-        Quietly uses the power of free writing to help you unload your thoughts.
+        Open Quietly and begin writing the moments you arrive. No setup. No
+        distractions. Just space.
       </p>
     </section>
-  )
+  );
 }
