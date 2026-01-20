@@ -73,23 +73,34 @@ body {
   align-items: center;
   font-size: 13px;
   color: var(--text-secondary);
+  padding: 24px 48px;
+  gap: 32px;
 }
 
 .nav-left {
   font-weight: 600;
   color: var(--text-primary);
   font-family: "Georgia", "Garamond", "Times New Roman", serif;
+  flex-shrink: 0;
+}
+
+.nav-center {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  gap: 40px;
 }
 
 .nav-center span {
   cursor: pointer;
-  margin: 0 var(--space-xs);
   transition: color 0.2s ease;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.nav-center span:hover {
-  color: var(--text-primary);
+.nav-right {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .nav-right button {
@@ -104,6 +115,10 @@ body {
 }
 
 .nav-right button:first-child:hover {
+  color: var(--text-primary);
+}
+
+.nav-center span:hover {
   color: var(--text-primary);
 }
 
@@ -264,11 +279,6 @@ body {
   justify-content: flex-start;
 }
 
-.card:hover {
-  border-color: var(--accent);
-  background: var(--bg-hover);
-}
-
 .card h3 {
   font-size: var(--fs-lg);
   line-height: var(--lh-tight);
@@ -291,35 +301,7 @@ body {
 ====================================================== */
 
 .feature-large {
-  background: var(--bg-surface);
-  padding: 48px 40px;
-  border-radius: 32px;
-  border: 1px solid var(--border-subtle);
-  max-width: 100%;
-  margin: 0 auto;
-  transition: all 0.2s ease;
-}
-
-.feature-large:hover {
-  border-color: var(--accent);
-  background: var(--bg-hover);
-}
-
-.feature-large h2 {
-  font-size: var(--fs-xl);
-  line-height: var(--lh-tight);
-  font-weight: 400;
-  margin-bottom: var(--space-xs);
-  font-family: "Georgia", "Garamond", "Times New Roman", serif;
-}
-
-.feature-large p {
-  font-size: var(--fs-md);
-  line-height: var(--lh-loose);
-  color: var(--text-secondary);
-  max-width: 520px;
-  margin-top: var(--space-sm);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: none !important;
 }
 
 .section-title {

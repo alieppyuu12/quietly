@@ -1,0 +1,552 @@
+/* ========================================================
+   CLERK AUTH PAGES - PRODUCTION READY STYLING
+   Dark Premium Theme (#121212, #1e1e1e, #4ade80)
+======================================================== */
+
+/* Main Container */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #121212;
+  padding: 20px;
+}
+
+.auth-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  z-index: 10;
+}
+
+/* Main Card Content */
+.auth-content {
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 32px;
+  padding: 48px 48px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 20;
+}
+
+/* Header Section */
+.auth-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.auth-header h1 {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #f5f5f5;
+  font-family: "Georgia", "Garamond", "Times New Roman", serif;
+  margin: 0 0 12px 0;
+}
+
+.auth-header p {
+  font-size: 15px;
+  color: #b0b0b0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Form Wrapper */
+.auth-form-wrapper {
+  margin-bottom: 32px;
+}
+
+/* ========================================================
+   CLERK COMPONENT OVERRIDES - CSS SELECTORS
+======================================================== */
+
+/* Clerk Root Box */
+.cl-root {
+  --clerk-color-background: #1e1e1e;
+  --clerk-color-foreground: #f5f5f5;
+  --clerk-color-primary: #4ade80;
+  --clerk-color-primary-foreground: #121212;
+  --clerk-color-secondary: #2a2a2a;
+  --clerk-color-neutral: #b0b0b0;
+  --clerk-color-border: #2a2a2a;
+  --clerk-color-shadow: #000000;
+  --clerk-color-danger: #ff6b6b;
+  --clerk-color-success: #4ade80;
+  --clerk-border-radius: 16px;
+  --clerk-font-size: 15px;
+}
+
+/* Clerk Main Card */
+.cl-card,
+.cl-signIn-start,
+.cl-signUp-start {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Clerk Header (Hidden - We Use Our Own) */
+.cl-headerTitle,
+.cl-headerSubtitle,
+.cl-header {
+  display: none !important;
+}
+
+/* Clerk Main Content Area */
+.cl-main,
+.cl-form {
+  width: 100%;
+}
+
+/* ========================================================
+   FORM FIELDS & INPUTS
+======================================================== */
+
+/* Input Container */
+.cl-formField {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.cl-formFieldLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #f5f5f5;
+  margin-bottom: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Input Field */
+.cl-formFieldInput,
+.cl-formFieldInput:not(.cl-oauthAvatarImage),
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100% !important;
+  height: 44px !important;
+  background: #1e1e1e !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 16px !important;
+  color: #f5f5f5 !important;
+  padding: 12px 16px !important;
+  font-size: 15px !important;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.cl-formFieldInput::placeholder,
+input::placeholder {
+  color: #808080 !important;
+}
+
+.cl-formFieldInput:focus,
+input:focus {
+  outline: none !important;
+  border-color: #4ade80 !important;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15) !important;
+  background: #1e1e1e !important;
+}
+
+/* Show/Hide Password Button */
+.cl-formFieldInputShowPasswordButton {
+  color: #b0b0b0 !important;
+  cursor: pointer !important;
+  padding: 8px !important;
+}
+
+.cl-formFieldInputShowPasswordButton:hover {
+  color: #4ade80 !important;
+}
+
+/* ========================================================
+   BUTTONS
+======================================================== */
+
+/* Primary Button (Submit) */
+.cl-formButtonPrimary,
+button[data-variant="solid"][data-color="primary"] {
+  width: 100% !important;
+  height: 48px !important;
+  background: #4ade80 !important;
+  color: #121212 !important;
+  border: none !important;
+  border-radius: 24px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  padding: 12px 24px !important;
+  box-sizing: border-box !important;
+}
+
+.cl-formButtonPrimary:hover,
+button[data-variant="solid"][data-color="primary"]:hover {
+  background: #22c55e !important;
+}
+
+.cl-formButtonPrimary:active,
+button[data-variant="solid"][data-color="primary"]:active {
+  transform: translateY(0) !important;
+}
+
+.cl-formButtonPrimary:disabled {
+  background: #1e1e1e !important;
+  color: #808080 !important;
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+}
+
+/* Secondary/Social Buttons */
+.cl-socialButtonsBlockButton,
+.cl-socialButton,
+button[data-variant="outline"] {
+  width: 100% !important;
+  height: 48px !important;
+  background: transparent !important;
+  border: 1px solid #2a2a2a !important;
+  color: #f5f5f5 !important;
+  border-radius: 24px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  padding: 12px 24px !important;
+  box-sizing: border-box !important;
+}
+
+.cl-socialButtonsBlockButton:hover,
+.cl-socialButton:hover,
+button[data-variant="outline"]:hover {
+  border-color: #4ade80 !important;
+  background: rgba(74, 222, 128, 0.05) !important;
+  color: #f5f5f5 !important;
+}
+
+.cl-socialButtonsBlockButtonText {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+/* ========================================================
+   DIVIDERS & SEPARATORS
+======================================================== */
+
+.cl-dividerLine {
+  background: #2a2a2a !important;
+  height: 1px !important;
+  margin: 24px 0 !important;
+}
+
+.cl-dividerText {
+  color: #b0b0b0 !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  text-transform: capitalize !important;
+}
+
+/* ========================================================
+   LINKS & TEXT
+======================================================== */
+
+.cl-footerActionLink,
+a[class*="cl-"],
+.cl-link {
+  color: #4ade80 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.cl-footerActionLink:hover,
+a[class*="cl-"]:hover,
+.cl-link:hover {
+  color: #22c55e !important;
+}
+
+.cl-footerActionText,
+.cl-footerPrimary {
+  color: #b0b0b0 !important;
+  font-size: 13px !important;
+  text-align: center !important;
+}
+
+/* ========================================================
+   CLERK FOOTER STYLING
+======================================================== */
+
+/* Hide "Already have an account? Sign in" footer action */
+.cl-footerAction {
+  display: none !important;
+}
+
+/* Style main footer */
+.cl-footer {
+  background: transparent !important;
+  margin: 0 !important;
+  margin-top: -48px !important;
+  padding: 32px 48px !important;
+  border: none !important;
+  border-top: 1px solid #2a2a2a !important;
+  width: calc(100% + 96px) !important;
+  position: relative !important;
+  left: -48px !important;
+  right: -48px !important;
+}
+
+/* Footer internal elements */
+.cl-footer > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+}
+
+.cl-footer p {
+  color: #b0b0b0 !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+}
+
+.cl-footer a {
+  color: #b0b0b0 !important;
+  text-decoration: none !important;
+}
+
+.cl-footer svg {
+  color: #b0b0b0 !important;
+  width: 60px !important;
+  height: auto !important;
+}
+
+/* Hide orange dividers */
+.cl-internal-1k7jtru,
+.cl-internal-pe6vm4 > div:first-child {
+  display: none !important;
+}
+
+/* ========================================================
+   ERROR & VALIDATION STATES
+======================================================== */
+
+/* Error Messages */
+.cl-alert,
+.cl-alertBox,
+[role="alert"] {
+  background: rgba(255, 107, 107, 0.1) !important;
+  border: 1px solid #ff6b6b !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  margin-bottom: 20px !important;
+  color: #ff9999 !important;
+  font-size: 14px !important;
+}
+
+.cl-alertBox__text,
+.cl-alert__text {
+  color: #ff9999 !important;
+}
+
+/* Input Error State */
+.cl-formField.cl-error .cl-formFieldInput,
+input.error,
+[aria-invalid="true"] {
+  border-color: #ff6b6b !important;
+  background: rgba(255, 107, 107, 0.05) !important;
+}
+
+.cl-formField.cl-error .cl-formFieldInput:focus,
+input.error:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15) !important;
+  border-color: #ff6b6b !important;
+}
+
+/* Error Label */
+.cl-formField.cl-error .cl-formFieldLabel {
+  color: #ff9999 !important;
+}
+
+/* ========================================================
+   LOADING & STATES
+======================================================== */
+
+/* Loading Spinner */
+.cl-spinner,
+.cl-loadingSpinner {
+  border-color: rgba(74, 222, 128, 0.2) !important;
+  border-right-color: #4ade80 !important;
+}
+
+/* ========================================================
+   BACKGROUND DECORATIVE ELEMENTS
+======================================================== */
+
+.auth-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.auth-blob {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: float 8s ease-in-out infinite;
+}
+
+.auth-blob-1 {
+  top: -100px;
+  right: -100px;
+  background: #4ade80;
+  animation-duration: 8s;
+}
+
+.auth-blob-2 {
+  bottom: -100px;
+  left: -100px;
+  background: #4ade80;
+  animation-duration: 10s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, -30px);
+  }
+}
+
+/* ========================================================
+   FOOTER CUSTOM SECTION
+======================================================== */
+
+/* Hide custom footer since we use Clerk footer now */
+.auth-footer {
+  display: none !important;
+}
+
+/* ========================================================
+   RESPONSIVE - TABLET
+======================================================== */
+
+@media (max-width: 768px) {
+  .auth-content {
+    padding: 40px 32px;
+    border-radius: 24px;
+  }
+
+  .auth-header h1 {
+    font-size: 28px;
+  }
+
+  .auth-header p {
+    font-size: 14px;
+  }
+
+  .cl-footer {
+    margin-top: -40px !important;
+    padding: 24px 32px !important;
+    width: calc(100% + 64px) !important;
+    left: -32px !important;
+  }
+}
+
+/* ========================================================
+   RESPONSIVE - MOBILE
+======================================================== */
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 16px;
+  }
+
+  .auth-content {
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+
+  .auth-header {
+    margin-bottom: 32px;
+  }
+
+  .auth-header h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .auth-header p {
+    font-size: 13px;
+  }
+
+  .cl-formFieldInput,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    height: 40px !important;
+    font-size: 16px !important;
+  }
+
+  .cl-formButtonPrimary,
+  button[data-variant="solid"][data-color="primary"] {
+    height: 44px !important;
+  }
+
+  .cl-footer {
+    margin-top: -32px !important;
+    padding: 20px 24px !important;
+    width: calc(100% + 48px) !important;
+    left: -24px !important;
+  }
+
+  .cl-footer p {
+    font-size: 12px !important;
+  }
+
+  .cl-footer svg {
+    width: 50px !important;
+  }
+}
+
+/* ========================================================
+   ACCESSIBILITY - FOCUS VISIBLE
+======================================================== */
+
+.cl-formFieldInput:focus-visible,
+input:focus-visible,
+.cl-formButtonPrimary:focus-visible,
+button:focus-visible {
+  outline: 2px solid #4ade80 !important;
+  outline-offset: 2px !important;
+}
+
+/* ========================================================
+   PRINT STYLES
+======================================================== */
+
+@media print {
+  .auth-container,
+  .auth-background,
+  .auth-blob {
+    display: none !important;
+  }
+}
