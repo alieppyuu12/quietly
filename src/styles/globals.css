@@ -521,10 +521,6 @@ button.subtle:hover {
   margin-left: 16px;
 }
 
-/* ========================================================
-   SETTINGS VIEW STYLES
-======================================================== */
-
 .settings-section {
   margin-bottom: 32px;
   padding-bottom: 24px;
@@ -585,9 +581,6 @@ button.subtle:hover {
   line-height: 1.5;
 }
 
-/* ========================================================
-   PAGE TITLE STATIC (for views without edit)
-======================================================== */
 
 .page-title-static {
   margin: 0;
