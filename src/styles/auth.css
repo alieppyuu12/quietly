@@ -54,10 +54,6 @@
   margin-bottom: 32px;
 }
 
-/* ========================================================
-   CLERK COMPONENT OVERRIDES - CSS SELECTORS
-======================================================== */
-
 /* Clerk Root Box */
 .cl-root {
   --clerk-color-background: #1e1e1e;
