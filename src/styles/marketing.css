@@ -147,11 +147,11 @@ body {
 }
 
 .hero h1 {
-  font-size: var(--fs-2xl);
+  font-size: var(--space-lg);
   line-height: var(--lh-tight);
   font-weight: 400;
   letter-spacing: -0.01em;
-  margin: 0;
+  margin-bottom: -3rem;
   color: var(--text-primary);
   font-family: "Georgia", "Garamond", "Times New Roman", serif;
 }
@@ -162,7 +162,7 @@ body {
   line-height: var(--lh-tight);
   font-weight: 400;
   letter-spacing: -0.01em;
-  margin: 0;
+  margin-bottom: -2.5rem;
   color: #4ade80;
   font-family: "Georgia", "Garamond", "Times New Roman", serif;
 }
