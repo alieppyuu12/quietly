@@ -1,7 +1,6 @@
 "use client";
 
 import { useWorkspace } from "@/application/workspace/WorkspaceContext";
-import { HomeView } from "@/components/home/HomeView";
 import { TrashView } from "@/components/home/TrashView";
 import { SettingsView } from "@/components/home/SettingsView";
 import { DatabaseView } from "@/components/page/DatabaseView";
@@ -39,9 +38,6 @@ export function AppContent() {
     deletePage,
   } = useWorkspace();
 
-  if (state.mode === "home") {
-    return <HomeView />;
-  }
 
   if (state.mode === "trash") {
     return <TrashView />;
