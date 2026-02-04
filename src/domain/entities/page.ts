@@ -1,8 +1,10 @@
-export type PageId = string
+export type PageId = string;
 
-export type Page = {
-  id: PageId
-  title: string
-  content: string
-  parentId?: PageId | null
+export interface Page {
+  id: PageId;
+  title: string;
+  content: string;
+  parentId?: PageId;
+  createdAt?: string;
+  updatedAt?: string;
 }
